@@ -11,7 +11,7 @@ class Node:
         self.prev:Node = None
         self.next:Node = None
 
-class DoublyLinkedList:
+class DoublyLinkedList(ListADT):
     def __init__(self):
         self.head:Node = None
         self.tail:Node = None
@@ -38,8 +38,13 @@ class DoublyLinkedList:
         if cur_node == None:
             return False
         if cur_node == self.head:
-            self.__init__()
-            return True
+            if self.size == 1:
+                self.__init__()
+                return True
+            else:
+                self.head.next.prev = None
+                self.head = self.head.next
+                cur_node.next = None
         elif cur_node == self.tail:
             self.tail = cur_node.prev
             self.tail.next = None
