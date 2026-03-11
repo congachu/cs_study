@@ -1,3 +1,10 @@
+import os
+import sys
+
+sys.path.append(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
+
+from adts import ListADT
+
 class Node:
     def __init__(self, data):
         self.data = data
