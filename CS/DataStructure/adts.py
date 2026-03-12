@@ -32,14 +32,11 @@ class StackADT(metaclass = ABCMeta):
     def peek(self):
         pass
 
-    def print(self):
+    def printStack(self):
         pass
 
     def isEmpty(self):
         pass
 
     def isFull(self):
-        pass
-
-    def size(self):
         pass

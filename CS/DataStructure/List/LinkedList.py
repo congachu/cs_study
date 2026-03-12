@@ -97,6 +97,35 @@ class LinkedList(ListADT):
             cur_node = cur_node.next
             cur_num += 1
 
+    def prepend(self, data):
+        new_node = Node(data)
+        if self.size == 0:
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+        self.head = new_node
+        self.size += 1
+        return True
+    
+    def popFront(self):
+        if self.size == 0:
+            return None
+        result = self.head.data
+        if self.head == self.tail:
+            self.head = self.tail = None
+        else:
+            temp = self.head
+            self.head = self.head.next
+            temp.next = None
+        self.size -= 1
+        return result
+    
+    def peekHead(self):
+        if self.size == 0:
+            return None
+        return self.head.data
+
+
 
 if __name__ == "__main__":
     linkedList = LinkedList()
