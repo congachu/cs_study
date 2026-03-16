@@ -26,17 +26,22 @@ class StackADT(metaclass = ABCMeta):
     def push(self, data):
         pass
 
+    @abstractmethod
     def pop(self):
         pass
 
+    @abstractmethod
     def peek(self):
         pass
 
+    @abstractmethod
     def printStack(self):
         pass
 
+    @abstractmethod
     def isEmpty(self):
         pass
 
+    @abstractmethod
     def isFull(self):
         pass
