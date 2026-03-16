@@ -124,7 +124,33 @@ class LinkedList(ListADT):
         if self.size == 0:
             return None
         return self.head.data
-
+    
+    def removeNode(self, node: Node):
+        prev = None
+        if self.head == None:
+            return False
+        cur_node = self.head
+        while cur_node != None and cur_node != node:
+            prev = cur_node
+            cur_node = cur_node.next
+        
+        if cur_node == None:
+            return False
+        if cur_node == self.head:
+            if self.size == 1:
+                self.__init__()
+                return True
+            else:
+                self.head = self.head.next
+                cur_node.next = None
+        elif cur_node == self.tail:
+            self.tail = prev
+            self.tail.next = None
+        else:
+            prev.next = cur_node.next
+        
+        self.size -= 1
+        return True
 
 
 if __name__ == "__main__":

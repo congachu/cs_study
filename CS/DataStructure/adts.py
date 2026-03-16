@@ -34,14 +34,15 @@ class StackADT(metaclass = ABCMeta):
     def peek(self):
         pass
 
+class QueueADT(metaclass = ABCMeta):
     @abstractmethod
-    def printStack(self):
+    def enqueue(self, data):
         pass
 
     @abstractmethod
-    def isEmpty(self):
+    def dequeue(self):
         pass
 
     @abstractmethod
-    def isFull(self):
+    def peek(self):
         pass
