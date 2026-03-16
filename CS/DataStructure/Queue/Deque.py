@@ -3,23 +3,25 @@ import sys
 
 sys.path.append(os.path.abspath(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
 
-from adts import QueueADT
 from List.DoublyLinkedList import DoublyLinkedList
 
-class Deque(QueueADT):
+class Deque:
     def __init__(self):
         self.data = DoublyLinkedList()
 
-    def enqueue(self, data):
-        self.data.append(data)
+    def pushFront(self, data):
+        self.data.prepend(data)
         return True
 
-    def dequeue(self):
-        result = self.data.popFront()
-        return result
+    def pushRear(self, data):
+        self.data.append(data)
+        return True
     
-    def peek(self):
-        return self.data.peekHead()
+    def popFront(self):
+        return self.data.removeNode(self.data.head)
+    
+    def popRear(self):
+        return self.data.removeNode(self.data.tail)
     
     def isEmpty(self):
         return self.data.size == 0
@@ -34,3 +36,25 @@ class Deque(QueueADT):
             print(f"| {cur_node.data}", end=" ")
             cur_node = cur_node.next
         print("|\n" + "-"*10)
+
+if __name__ == "__main__":
+    deque = Deque()
+    print(deque.popFront())
+    deque.pushRear(1)
+    deque.pushRear(2)
+    deque.pushRear(3)
+    deque.pushFront(4)
+    deque.pushFront(5)
+    deque.pushFront(6)
+    deque.printQueue()
+    print(deque.popFront())
+    print(deque.popFront())
+    deque.printQueue()
+    print(deque.popRear())
+    print(deque.popRear())
+    deque.printQueue()
+    print(deque.popFront())
+    print(deque.popFront())
+    deque.printQueue()
+    print(deque.popFront())
+    deque.printQueue()

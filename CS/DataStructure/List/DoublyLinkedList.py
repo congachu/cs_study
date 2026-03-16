@@ -28,6 +28,18 @@ class DoublyLinkedList(ListADT):
             self.tail = new_node
         self.size += 1
         return True
+    
+    def prepend(self, data):
+        new_node = Node(data)
+        if self.size == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        self.size += 1
+        return True
 
     def remove(self, data):
         if self.size == 0:
@@ -53,6 +65,26 @@ class DoublyLinkedList(ListADT):
             cur_node.next.prev = cur_node.prev
         self.size -= 1
         return True
+    
+    def removeNode(self, node: Node):
+        if node == None:
+            return False
+        if node == self.head:
+            if self.size == 1:
+                self.__init__()
+                return node.data
+            else:
+                self.head.next.prev = None
+                self.head = self.head.next
+                node.next = None
+        elif node == self.tail:
+            self.tail = node.prev
+            self.tail.next = None
+        else:
+            node.prev.next = node.next
+            node.next.prev = node.prev
+        self.size -= 1
+        return node.data
 
     def insert(self, data, index):
         if self.size == 0 or index >= self.size:
